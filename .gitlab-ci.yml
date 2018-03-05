@@ -1,0 +1,20 @@
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+stages:
+  - lint
+  - test
+
+lint:
+  image: node:8.9.1
+  stage: lint
+  script:
+    - npm install
+    - npm run lint
+
+test:
+  image: node:8.9.1
+  stage: test
+  script:
+    - npm install
+    - npm test
