@@ -22,23 +22,25 @@ Here is a simple example:
 CaptainWhisker.initialize('./src');
 CaptainWhisker.build(
   'view.hbs', 
-  [
-    {
-      id: 1,
-      firstName: 'Jerry',
-      lastName: 'Seinfeld'
-    },
-    {
-      id: 2,
-      firstName: 'George',
-      lastName: 'Costanza'
-    },
-    {
-      id: 3,
-      firstName: undefined,
-      lastName: Kramer
-    }
-  ]
+  { 
+    users: [
+      {
+        id: 1,
+        firstName: 'Jerry',
+        lastName: 'Seinfeld'
+      },
+      {
+        id: 2,
+        firstName: 'George',
+        lastName: 'Costanza'
+      },
+      {
+        id: 3,
+        firstName: undefined,
+        lastName: 'Kramer'
+      }
+    ]
+  }
 );
 ```
 
