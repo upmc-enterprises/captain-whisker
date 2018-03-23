@@ -19,6 +19,7 @@ Here is a simple example:
 {{/jsonlist}}
 
 // app.js
+const CaptainWhisker = require('captain-whisker');
 CaptainWhisker.initialize('./src');
 CaptainWhisker.build(
   'view.hbs', 
@@ -68,9 +69,10 @@ Would produce a JSON structure like this:
 
 ## Finding template files
 
-Calling `CaptainWhisker.initialize('./src')` will search your source directory and all subdirectories for files with an
-`.hbs` extension.  Any `.hbs` files it finds that don't start with `_` will be compiled and registered as templates,
-usable with `CaptainWhisker.build('./relative/path/to.hbs', context)`.
+Calling `CaptainWhisker.initialize('./root')` will search your source directory and all subdirectories for files with an
+`.hbs` extension.  This shold be done once per process; CaptainWhisker will store store the precompiled templates so
+they don't need to be compiled with every use.  Any `.hbs` files it finds that don't start with `_` will be compiled and
+registered as templates, usable with `CaptainWhisker.build('path/relative/to/root.hbs', context)`.  
 
 Any files that have names beginning with an underscore will be considered partials.
 

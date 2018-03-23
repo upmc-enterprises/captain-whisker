@@ -50,8 +50,8 @@ describe('JsonView', () => {
     });
 
     it('stores the templates', () => {
-      expect(CaptainWhisker._templates['./src/seinfeld/handlebars']).toEqual(
-        templateFiles.src.seinfeld.handlebars
+      expect(CaptainWhisker._templates['/seinfeld/search.hbs']).toEqual(
+        templateFiles.src.seinfeld['search.hbs']
       );
     });
 
@@ -158,13 +158,26 @@ describe('JsonView', () => {
       const expected = 'newman template';
       let actual;
 
-      beforeEach(() => {
-        CaptainWhisker._templates = { newman: () => expected };
-        actual = CaptainWhisker.build('newman', {});
+      describe('when a leading slash is provided', () => {
+        beforeEach(() => {
+          CaptainWhisker._templates = { '/newman': () => expected };
+          actual = CaptainWhisker.build('/newman', {});
+        });
+
+        it('renders the template as a string', () => {
+          expect(actual).toEqual(expected);
+        });
       });
 
-      it('renders the template as a string', () => {
-        expect(actual).toEqual(expected);
+      describe('when no leading slash is provided', () => {
+        beforeEach(() => {
+          CaptainWhisker._templates = { '/newman': () => expected };
+          actual = CaptainWhisker.build('newman', {});
+        });
+
+        it('renders the template as a string', () => {
+          expect(actual).toEqual(expected);
+        });
       });
     });
   });

@@ -21,11 +21,22 @@ CaptainWhisker.initialize = rootDir => {
 /**
  * Build a JSON string from a template name and context object.
  *
- * @param {string} template the path to the template file
+ * @param {string} template the path to the template file, relative to the root
+ * provided to CaptainWhisker.initialize()
  * @param {Object} context the context object to provide to the template
  * @returns {string} the rendered JSON string
  */
 CaptainWhisker.build = (template, context) => {
+  function prependLeadingSlashIfMissing(template) {
+    if (!template.match(/^\//)) {
+      template = `/${template}`;
+    }
+
+    return template;
+  }
+
+  template = prependLeadingSlashIfMissing(template);
+
   if (!CaptainWhisker._templates[template]) {
     throw `Template not found [${template}]`;
   }
@@ -41,6 +52,7 @@ CaptainWhisker.build = (template, context) => {
  * @param {string} rootDir the root directory to search for templates.
  */
 function _compileTemplates(rootDir) {
+  rootDir = rootDir.replace(/\/+$/, '');
   const templates = glob.sync(`${rootDir}/**/*.hbs`);
   for (let template of templates) {
     const fileParts = template.split('/');
@@ -49,7 +61,9 @@ function _compileTemplates(rootDir) {
     if (fileName.startsWith('_')) {
       Handlebars.registerPartial(fileName.split('.')[0], templateContent);
     } else {
-      CaptainWhisker._templates[template] = Handlebars.compile(templateContent);
+      CaptainWhisker._templates[
+        template.replace(rootDir, '')
+      ] = Handlebars.compile(templateContent);
     }
   }
 }
