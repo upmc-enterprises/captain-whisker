@@ -13,7 +13,7 @@
     "url": "git@git.tdc.upmc.edu:ZipScript/captain-whisker.git"
   },
   "author": "John Reiter <reiterj@upmc.edu>",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",

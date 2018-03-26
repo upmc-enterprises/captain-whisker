@@ -1,14 +1,12 @@
 # Captain Whisker
 
-![captain_whisker](docs/captain_whisker.png)
-
 Captain Whisker leverages Handlebars to make JSON templating easy in Node.js.  Coming from rails, I really missed
 [Jbuilder](https://github.com/rails/jbuilder), and the existing similar solutions in Node.js were either abandoned or
 not quite what I wanted.  It's probably overly simple and naive right now, but it works surprisingly well.
 
 Here is a simple example:
 
-```javascript
+```
 // view.hbs
 {{#jsonList users}}
   {
@@ -47,7 +45,7 @@ CaptainWhisker.build(
 
 Would produce a JSON structure like this:
 
-```javascript
+```
 [
   {
     "id": 1,
