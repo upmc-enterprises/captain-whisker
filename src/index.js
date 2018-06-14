@@ -78,7 +78,7 @@ function _registerHelpers() {
     } else if (_notAJsonString(value)) {
       return new Handlebars.SafeString(value);
     } else {
-      return new Handlebars.SafeString(`"${value}"`);
+      return new Handlebars.SafeString(`${JSON.stringify(value)}`);
     }
   });
 

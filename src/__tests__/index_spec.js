@@ -63,14 +63,14 @@ describe('JsonView', () => {
       });
 
       describe('when the value is a string', () => {
-        const expected = '"Bookman"';
+        const expected = '"\\nBook\\nman\\t"';
         let actual;
 
         beforeEach(() => {
-          actual = json('Bookman');
+          actual = json('\nBook\nman\t');
         });
 
-        it('double quotes the string', () => {
+        it('JSON stringifies the value', () => {
           expect(actual.string).toEqual(expected);
         });
       });
