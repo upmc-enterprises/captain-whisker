@@ -3,10 +3,10 @@ jest.mock('glob');
 jest.mock('handlebars');
 
 describe('JsonView', () => {
-  const CaptainWhisker = require('../index'),
-    Handlebars = require('handlebars'),
-    fs = require('fs'),
-    glob = require('glob');
+  const CaptainWhisker = require('../index');
+  const Handlebars = require('handlebars');
+  const fs = require('fs');
+  const glob = require('glob');
 
   describe('initialize', () => {
     const templateFiles = {
@@ -129,8 +129,8 @@ describe('JsonView', () => {
     });
 
     describe('jsonList', () => {
-      const input = [{ name: 'Jerry' }, { name: 'Elaine' }],
-        expected = '[{"name":"Jerry"},{"name":"Elaine"}]';
+      const input = [{ name: 'Jerry' }, { name: 'Elaine' }];
+      const expected = '[{"name":"Jerry"},{"name":"Elaine"}]';
       let actual;
 
       beforeEach(() => {
