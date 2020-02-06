@@ -1,58 +1,66 @@
 {
-    "env": {
-        "es6": true,
-        "node": true,
-        "jasmine": true,
-        "jest": true
-    },
-    "extends": ["eslint:recommended", "prettier"],
-    "parserOptions": {
-        "sourceType": "module",
-        "ecmaVersion": 8,
-        "ecmaFeatures": {
-          "experimentalObjectRestSpread": true
+  "env": {
+    "es6": true,
+    "node": true,
+    "jasmine": true,
+    "jest": true
+  },
+  "extends": ["eslint:recommended", "prettier"],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 9
+  },
+  "plugins": ["prettier"],
+  "rules": {
+    "one-var": ["error", "never"],
+    "no-return-await": ["error"],
+    "prettier/prettier": ["error", {
+      "singleQuote": true
+    }],
+    "require-await": ["error"],
+    "prettier/prettier": ["error", {
+      "singleQuote": true
+    }],
+    "require-jsdoc": [
+      "error", {
+        "require": {
+          "FunctionDeclaration": false,
+          "MethodDefinition": true,
+          "ClassDeclaration": true,
+          "ArrowFunctionExpression": false
         }
-    },
-    "plugins": ["prettier"],
-    "rules": {
-        "prettier/prettier": ["error", {"singleQuote": true}],
-        "require-jsdoc": [
-          "error", {
-          "require": {
-            "FunctionDeclaration": false,
-            "MethodDefinition": true,
-            "ClassDeclaration": true,
-            "ArrowFunctionExpression": false
-          }
-        }],
-        "valid-jsdoc": [
-          "error",
-          { 
-            "requireReturn": false,
-            "prefer": {
-              "return": "returns"
-            },
-            "preferType": {
-              "Boolean": "boolean",
-              "Number": "number",
-              "String": "string",
-              "Symbol": "symbol",
-              "object": "Object"
-            }
-          }
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "spaced-comment": [
-          "error",
-          "always"
-        ],
-        "max-len": [
-          "error",
-          80,
-          { "ignoreUrls": true }
-        ]
-    }
+      }
+    ],
+    "valid-jsdoc": [
+      "error",
+      {
+        "requireReturn": false,
+        "prefer": {
+          "return": "returns"
+        },
+        "preferType": {
+          "Boolean": "boolean",
+          "Number": "number",
+          "String": "string",
+          "Symbol": "symbol",
+          "object": "Object"
+        }
+      }
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "spaced-comment": [
+      "error",
+      "always"
+    ],
+    "max-len": [
+      "error",
+      80,
+      {
+        "ignoreUrls": true
+      }
+    ]
+  }
 }
