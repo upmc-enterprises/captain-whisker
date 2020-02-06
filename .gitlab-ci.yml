@@ -6,15 +6,19 @@ stages:
   - test
 
 lint:
-  image: node:8.9.1
+  image: node:10.15.3
   stage: lint
+  tags:
+    - docker
   script:
     - npm install
     - npm run lint
 
 test:
-  image: node:8.9.1
+  image: node:10.15.3
   stage: test
+  tags:
+    - docker
   script:
     - npm install
     - npm test
