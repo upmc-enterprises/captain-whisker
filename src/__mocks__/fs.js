@@ -3,7 +3,7 @@ const _ = require('lodash');
 
 let mockFiles;
 
-fs.readFileSync = jest.fn(file => {
+fs.readFileSync = jest.fn((file) => {
   return _.get(mockFiles, file.split('/').slice(1)) || file;
 });
 
@@ -20,7 +20,7 @@ fs.readFileSync = jest.fn(file => {
  *    }
  * }
  */
-fs.__setMockFiles = function(files) {
+fs.__setMockFiles = function (files) {
   mockFiles = files;
 };
 
