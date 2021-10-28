@@ -14,12 +14,12 @@ describe('JsonView', () => {
         seinfeld: {
           '_kramer.hbs': 'kramer handlebars',
           '_costanza.hbs': 'costanza handlebars',
-          'search.hbs': 'seinfeld search handlebars'
+          'search.hbs': 'seinfeld search handlebars',
         },
         newman: {
-          'create.hbs': 'Hello newman handlebars'
-        }
-      }
+          'create.hbs': 'Hello newman handlebars',
+        },
+      },
     };
 
     beforeEach(() => {
@@ -28,7 +28,7 @@ describe('JsonView', () => {
         './src/seinfeld/_kramer.hbs',
         './src/seinfeld/_costanza.hbs',
         './src/seinfeld/search.hbs',
-        './src/newman/create.hbs'
+        './src/newman/create.hbs',
       ]);
       Handlebars.compile.mockClear();
       Handlebars.registerPartial.mockClear();
@@ -38,14 +38,14 @@ describe('JsonView', () => {
     it('compiles the templates', () => {
       expect(Handlebars.compile.mock.calls).toEqual([
         [templateFiles.src.seinfeld['search.hbs']],
-        [templateFiles.src.newman['create.hbs']]
+        [templateFiles.src.newman['create.hbs']],
       ]);
     });
 
     it('registers partials', () => {
       expect(Handlebars.registerPartial.mock.calls).toEqual([
         ['_kramer', 'kramer handlebars'],
-        ['_costanza', 'costanza handlebars']
+        ['_costanza', 'costanza handlebars'],
       ]);
     });
 
@@ -135,7 +135,7 @@ describe('JsonView', () => {
 
       beforeEach(() => {
         actual = Handlebars.__helper('jsonList')(input, {
-          fn: item => JSON.stringify(item)
+          fn: (item) => JSON.stringify(item),
         });
       });
 

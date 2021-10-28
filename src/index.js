@@ -13,7 +13,7 @@ const CaptainWhisker = { _templates: {} };
  *
  * @param {string} rootDir the root directory to search for templates.
  */
-CaptainWhisker.initialize = rootDir => {
+CaptainWhisker.initialize = (rootDir) => {
   _registerHelpers();
   _compileTemplates(rootDir);
 };
@@ -61,9 +61,8 @@ function _compileTemplates(rootDir) {
     if (fileName.startsWith('_')) {
       Handlebars.registerPartial(fileName.split('.')[0], templateContent);
     } else {
-      CaptainWhisker._templates[
-        template.replace(rootDir, '')
-      ] = Handlebars.compile(templateContent);
+      CaptainWhisker._templates[template.replace(rootDir, '')] =
+        Handlebars.compile(templateContent);
     }
   }
 }
@@ -72,7 +71,7 @@ function _compileTemplates(rootDir) {
  * Register Handlebars helper functions.
  */
 function _registerHelpers() {
-  Handlebars.registerHelper('json', value => {
+  Handlebars.registerHelper('json', (value) => {
     if (value === undefined || value === null) {
       return new Handlebars.SafeString(null);
     } else if (_notAJsonString(value)) {
@@ -83,7 +82,7 @@ function _registerHelpers() {
   });
 
   Handlebars.registerHelper('jsonList', (items, options) => {
-    return `[${items.map(item => options.fn(item).trim()).join(',')}]`;
+    return `[${items.map((item) => options.fn(item).trim()).join(',')}]`;
   });
 }
 

@@ -6,7 +6,7 @@ glob.sync = jest.fn(() => {
   return mockFiles;
 });
 
-glob.__setMockFiles = function(files) {
+glob.__setMockFiles = function (files) {
   mockFiles = files;
 };
 
